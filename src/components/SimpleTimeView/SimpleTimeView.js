@@ -4,11 +4,11 @@ import RadialCounter from '../RadialCounter/RadialCounter';
 
 import './SimpleTimeView.css';
 
-const SimpleTimeView = ({ children, secondsLeft, sessionLength }) => {
+const SimpleTimeView = ({ children, secondsLeft, sessionLength, onClick = () => (false) }) => {
     const mins = Math.floor(secondsLeft / 60);
     const secs = secondsLeft % 60;
     return (
-        <div className="SimpleTimeView">
+        <div className="SimpleTimeView" onClick={onClick}>
             <RadialCounter className="SimpleTimeView-circle" value={secondsLeft} maxValue={sessionLength} size="400" />
             <div  className="SimpleTimeView-clock">{`${mins}:${secs < 10 ? '0' : ''}${secs}`}</div>
         </div>

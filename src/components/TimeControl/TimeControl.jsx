@@ -27,18 +27,16 @@ class TimeControl extends React.Component {
         this.props.dispatch(setRunning(true));
     }
     onStopTimer(){
-        window.clearInterval(this.timer);
-        this.timer = null;
-        this.resetTimer();
-        this.props.dispatch(setRunning(false));
+        this.onPauseTimer();
+        this.resetTimer(this.props.sessionLength);
     }
     onPauseTimer() {
         window.clearInterval(this.timer);
         this.timer = null;
         this.props.dispatch(setRunning(false));
     }
-    resetTimer() {
-        let lengthOfTime = this.props.sessionLength || 600;
+    resetTimer(sessionLength) {
+        let lengthOfTime = sessionLength || 600;
         this.props.dispatch(setSecondsLeft(lengthOfTime));
     }
     onTimer() {
@@ -70,7 +68,8 @@ class TimeControl extends React.Component {
             }
         }
         if (this.props.currentUser !== nextProps.currentUser) {
-            this.onStopTimer();
+            this.onPauseTimer();
+            this.resetTimer(nextProps.sessionLength);
         }
         if (this.props.rotation !== nextProps.rotation && !(nextProps.rotation % this.props.breakInterval)) {
             //this.props.dispatch(setSecondsLeft(this.props.breakTime));

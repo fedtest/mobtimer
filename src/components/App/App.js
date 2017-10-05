@@ -38,9 +38,9 @@ class App extends Component {
         const paneOpen = showSettings;
         return (
             <div className={`App ${paneOpen ? 'App--pane-open' : ''}`}>
-                <div className="App-mainView" onClick={paneOpen ? this.onToggleSettings : this.onToggleStart}>
+                <div className="App-mainView" onClick={paneOpen ? this.onToggleSettings : () => (false)}>
                     <UserList />
-                    <SimpleTimeView />
+                    <SimpleTimeView onClick={this.onToggleStart} />
                     <TimeControl onTime={this.onTime} />
 
                     <Notification />
