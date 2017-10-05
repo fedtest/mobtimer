@@ -11,7 +11,7 @@ class SettingsView extends React.Component {
     }
     onChange(name, value) {
         if (value.match(/^[0-9]+$/)) {
-            this.props.dispatch(updateSettings({ [name]: value }));
+            this.props.dispatch(updateSettings({ [name]: parseInt(value) }));
         }
     }
 

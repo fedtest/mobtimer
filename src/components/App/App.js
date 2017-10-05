@@ -10,7 +10,7 @@ import TimeControl from '../TimeControl/TimeControl.jsx';
 import SimpleTimeView from '../SimpleTimeView/SimpleTimeView';
 import RadialCounter from '../RadialCounter/RadialCounter';
 import { nextUser } from '../../redux/user/user_actions';
-import { stop } from '../../redux/time/time_actions';
+import { setRunning } from '../../redux/time/time_actions';
 
 import Icon from '../Icon/Icon';
 
@@ -19,10 +19,15 @@ class App extends Component {
       super();
       this.state = { showSettings: false };
       this.onTime = this.onTime.bind(this);
+      this.onToggleStart = this.onToggleStart.bind(this);
       this.onToggleSettings = this.onToggleSettings.bind(this);
   }
   onTime() {
+      this.props.dispatch(setRunning(false));
       this.props.dispatch(nextUser());
+  }
+  onToggleStart() {
+      this.props.dispatch(setRunning(!this.props.running));
   }
   onToggleSettings() {
       this.setState({ showSettings: !this.state.showSettings });
@@ -33,10 +38,10 @@ class App extends Component {
         const paneOpen = showSettings;
         return (
             <div className={`App ${paneOpen ? 'App--pane-open' : ''}`}>
-                <div className="App-mainView">
+                <div className="App-mainView" onClick={paneOpen ? this.onToggleSettings : this.onToggleStart}>
                     <UserList />
                     <SimpleTimeView />
-                    <TimeControl />
+                    <TimeControl onTime={this.onTime} />
 
                     <Notification />
                     <div className = "App-controls">
@@ -55,5 +60,6 @@ const mapStateToProps = (state) => ({
     rotation: state.user.rotation,
     secondsLeft: state.time.secondsLeft,
     sessionLength: state.settings.sessionLength,
+    running: state.time.running,
 });
 export default connect(mapStateToProps)(App);

@@ -20,16 +20,21 @@ class TimeControl extends React.Component {
         };
     }
     onStartTimer(){
+        if (this.timer) {
+          window.clearInterval(this.timer);
+        }
         this.timer = window.setInterval(this.onTimer, 1000);
         this.props.dispatch(setRunning(true));
     }
     onStopTimer(){
         window.clearInterval(this.timer);
+        this.timer = null;
         this.resetTimer();
         this.props.dispatch(setRunning(false));
     }
     onPauseTimer() {
         window.clearInterval(this.timer);
+        this.timer = null;
         this.props.dispatch(setRunning(false));
     }
     resetTimer() {
@@ -48,7 +53,22 @@ class TimeControl extends React.Component {
     onNextUser() {
         this.props.dispatch(nextUser());
     }
+    componentWillUnmount() {
+        window.clearInterval(this.timer);
+    }
+    componentDidMount() {
+        if (this.props.running) {
+            this.timer = window.setInterval(this.onTimer, 1000);
+        }
+    }
     componentWillReceiveProps(nextProps){
+        if (this.props.running !== nextProps.running) {
+            if (nextProps.running) {
+              this.onStartTimer();
+            } else {
+              this.onPauseTimer();
+            }
+        }
         if (this.props.currentUser !== nextProps.currentUser) {
             this.onStopTimer();
         }
