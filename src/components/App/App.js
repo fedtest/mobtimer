@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import UserList from '../UserList/UserList.jsx';
-import Intermezzo from '../Intermezzo/Intermezzo.jsx';
+// import Intermezzo from '../Intermezzo/Intermezzo.jsx';
 import Notification from '../Notification/Notification.jsx';
-import CountDownWrapper from '../CountdownWrapper/CountDownWrapper.jsx';
+// import CountDownWrapper from '../CountdownWrapper/CountDownWrapper.jsx';
 import SettingsView from '../SettingsView/SettingsView';
 import TimeControl from '../TimeControl/TimeControl.jsx';
 import SimpleTimeView from '../SimpleTimeView/SimpleTimeView';
-import RadialCounter from '../RadialCounter/RadialCounter';
+// import RadialCounter from '../RadialCounter/RadialCounter';
 import { nextUser } from '../../redux/user/user_actions';
 import { setRunning } from '../../redux/time/time_actions';
 
@@ -33,33 +33,31 @@ class App extends Component {
       this.setState({ showSettings: !this.state.showSettings });
   }
   render() {
-        const { rotation, secondsLeft, sessionLength } = this.props;
+        // const { rotation, secondsLeft, sessionLength } = this.props;
         const { showSettings } = this.state;
         const paneOpen = showSettings;
         return (
             <div className={`App ${paneOpen ? 'App--pane-open' : ''}`}>
                 <div className="App-mainView" onClick={paneOpen ? this.onToggleSettings : () => (false)}>
-                    <UserList />
-                    <SimpleTimeView onClick={this.onToggleStart} />
-                    <TimeControl onTime={this.onTime} />
-
                     <Notification />
-                    <div className = "App-controls">
-                    </div>
+                    <SimpleTimeView onClick={this.onToggleStart} />
+                    <UserList />
                 </div>
-
-                <Icon icon='settings' onClick={this.onToggleSettings} className={`App-settings-button App-settings-button--${showSettings ? 'open' : 'closed'}`} />
+                <div className="App-controls">
+                    <TimeControl onTime={this.onTime} />
+                    <Icon icon='settings' onClick={this.onToggleSettings} className={`App-settings-button App-settings-button--${showSettings ? 'open' : 'closed'}`} />
+                </div>
                 <SettingsView className={showSettings ? 'App-settings App-settings--open' : 'App-settings'} />
-
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    rotation: state.user.rotation,
-    secondsLeft: state.time.secondsLeft,
-    sessionLength: state.settings.sessionLength,
+    // rotation: state.user.rotation,
+    // secondsLeft: state.time.secondsLeft,
+    // sessionLength: state.settings.sessionLength,
     running: state.time.running,
 });
+
 export default connect(mapStateToProps)(App);

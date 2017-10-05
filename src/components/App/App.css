@@ -4,7 +4,9 @@
     color: #ffffff;
     text-align: center;
     position: relative;
+    font-family: 'Comic Sans MS';
 }
+
 .App-mainView{
     display: flex;
     flex-direction: column;
@@ -21,14 +23,7 @@
 }
 
 .App--pane-open .App-mainView {
-    filter: blur(3px);
     transform: translate3d(-180px, 0, 0);
-}
-
-.App-icon {
-    background: none;
-    padding: 0;
-    border: none;
 }
 
 .App-logo {
@@ -43,8 +38,12 @@
     color: white;
 }
 
-.App-intro {
-    font-size: large;
+.App-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    display: flex;
 }
 
 .App-settings {
@@ -60,17 +59,6 @@
 
 .App-settings--open {
     transform: translate3d(0px, 0, 0);
-}
-
-.App-settings-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1;
-}
-
-.App-settings-button--open::before {
-    content: '';
 }
 
 .app__done {

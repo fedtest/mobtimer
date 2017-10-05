@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import forward from '../../images/fast-forward.svg';
 import stop from '../../images/stop.svg';
 import play from '../../images/play-button.svg';

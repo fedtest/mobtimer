@@ -7,7 +7,7 @@ const initial_state = {
     }
 };
 
-const NEW_USER_NAME = 'new_user';
+// const NEW_USER_NAME = 'new_user';
 
 const reducer = (state = initial_state, action) => {
     switch(action.type) {

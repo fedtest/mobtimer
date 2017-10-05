@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateSettings } from '../../redux/settings/settings_action';
 import './SettingsView.css';
-import {addUser, removeUser, toggleUserSleeping} from '../../redux/user/user_actions';
+import {addUser} from '../../redux/user/user_actions';
 
 class SettingsView extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class SettingsView extends React.Component {
     }
     onChange(name, value) {
         if (value.match(/^[0-9]+$/)) {
-            this.props.dispatch(updateSettings({ [name]: parseInt(value) }));
+            this.props.dispatch(updateSettings({ [name]: parseInt(value, 10) }));
         }
     }
 

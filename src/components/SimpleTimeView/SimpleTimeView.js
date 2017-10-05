@@ -10,7 +10,9 @@ const SimpleTimeView = ({ children, secondsLeft, sessionLength, onClick = () => 
     return (
         <div className="SimpleTimeView" onClick={onClick}>
             <RadialCounter className="SimpleTimeView-circle" value={secondsLeft} maxValue={sessionLength} size="400" />
-            <div  className="SimpleTimeView-clock">{`${mins}:${secs < 10 ? '0' : ''}${secs}`}</div>
+            <div className="SimpleTimeView-clock">
+                <span>{`${mins}:${secs < 10 ? '0' : ''}${secs}`}</span>
+            </div>
         </div>
     );
 }

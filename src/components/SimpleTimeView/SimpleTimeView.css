@@ -4,12 +4,15 @@
     justify-content: center;
     position: relative;
     flex-grow: 1;
+    cursor: pointer;
 }
 
 .SimpleTimeView-circle{
 
 }
+
 .SimpleTimeView-clock{
+    font-family: 'Digital', sans-serif;
     position: absolute;
     left: 0;
     width: 100%;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Icon from '../Icon/Icon';
 import { setSecondsLeft, decrementSeconds, setRunning } from '../../redux/time/time_actions';
 import { nextUser } from '../../redux/user/user_actions';
+import './TimeControl.css';
 
 class TimeControl extends React.Component {
     constructor({sessionLength}){
@@ -78,10 +79,12 @@ class TimeControl extends React.Component {
         }
     }
     render() {
-        const { running } = this.props;
-        return (<div>
-            <Icon icon='forward' size="large" onClick={this.onNextUser} />
-        </div>);
+        // const { running } = this.props;
+        return (
+            <div className="TimeControl">
+                <Icon icon='forward' size="medium" onClick={this.onNextUser} />
+            </div>
+        );
     }
 }
 

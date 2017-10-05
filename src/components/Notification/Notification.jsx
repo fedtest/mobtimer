@@ -24,7 +24,7 @@ class Notification extends React.Component {
         const { currentUser } = this.props;
         const { hidden } = this.state;
         return (
-            <div className={`notification ${hidden ? 'notification--hidden' : ''}`}>
+            <div className={`Notification ${hidden ? 'Notification--hidden' : ''}`}>
                 Hello&nbsp;{currentUser}
             </div>
         )
