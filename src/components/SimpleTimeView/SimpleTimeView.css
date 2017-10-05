@@ -1,5 +1,9 @@
 .SimpleTimeView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    flex-grow: 1;
 }
 
 .SimpleTimeView-circle{

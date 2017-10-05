@@ -1,3 +1,10 @@
 .RadialCounter {
     transform: rotate(-90deg);
+    height: 380px;
+}
+
+@media (min-height: 999px) {
+  .RadialCounter {
+    height: 600px;
+  }
 }

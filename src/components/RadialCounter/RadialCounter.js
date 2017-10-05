@@ -8,7 +8,7 @@ const RadialCounter = ({value, maxValue, size, className}) => {
     const dashArray = 2 * Math.PI * innerRadius;
     const dashOffset = dashArray * 1.0 * value / maxValue;
     return (
-        <svg className={`RadialCounter ${className}`} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <svg className={`RadialCounter ${className}`} viewBox={`0 0 ${size} ${size}`}>
             <circle cx={radius} cy={radius} r={innerRadius} fill="none" strokeWidth={strokeWidth} stroke="#0f0" />
             <circle cx={radius} cy={radius} r={innerRadius} fill="none" strokeWidth={strokeWidth} stroke="#080" strokeDasharray={dashArray} strokeDashoffset={dashOffset} />
         </svg>

@@ -6,6 +6,8 @@
     position: relative;
 }
 .App-mainView{
+    display: flex;
+    flex-direction: column;
     background: url("../../images/background.png") no-repeat;
     background-image-position: fixed;
     background-size: cover;
