@@ -80,10 +80,6 @@ class TimeControl extends React.Component {
     render() {
         const { running } = this.props;
         return (<div>
-            {running
-                ? (<Icon icon='pause' size="large" onClick={this.onPauseTimer} />)
-                : (<Icon icon='play' size="large" onClick={this.onStartTimer} />)}
-            <Icon icon='stop' size="large" onClick={this.onStopTimer} />
             <Icon icon='forward' size="large" onClick={this.onNextUser} />
         </div>);
     }
